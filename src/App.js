@@ -8,24 +8,24 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      wallet: 100,
-      boxIncrement: 1,
+      wallet: 0,
+      boxIncrement: 0,
       items: {
         names: [
-          'extra-box',
-          'hamster'
+          'auto-box',
+          'speed-box'
         ],
         currentLevels: {
-          'extra-box': 0,
-          'hamster': 0
+          'auto-box': 0,
+          'speed-box': 0
         },
         prices: {
-          'extra-box': [30,50,70,90,120],
-          'hamster': [100, 200, 300, 400]
+          'auto-box': [5,50,500,1000,10000],
+          'speed-box': [100, 2000, 30000, 50000]
         },
         values: {
-          'extra-box': [1,1,1,1,1],
-          'hamster': [10, 20, 30, 50, 100]
+          'auto-box': [1,1,1,1,1],
+          'speed-box': [10, 20, 30, 50, 100]
         }
       }
     };

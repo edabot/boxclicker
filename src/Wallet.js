@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-
+import './Wallet.css'
 class Wallet extends Component {
+
+  displayWallet() {
+    if (this.props.value > 0) {
+      return this.props.value
+    }
+  }
 
   render() {
     return (
-      <div className="Wallet" onClick={this.props.click}>
-        <h3>Current wallet</h3>
-        <div>{this.props.value}</div>
+      <div className="number">
+        {this.displayWallet()}
       </div>
     );
   }
