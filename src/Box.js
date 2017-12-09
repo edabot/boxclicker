@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Cube.css';
 
 class Box extends Component {
 

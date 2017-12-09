@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import Box from './Box';
 import Store from './Store';
 import Wallet from './Wallet';
@@ -26,6 +25,12 @@ class App extends Component {
     }, 1000);
   }
 
+  makeVisible(itemName) {
+    let newItems = Object.assign(this.state.items)
+    newItems.items[itemName].visible = true
+    this.setState({items: newItems})
+  }
+
   buyItem(itemName) {
       const oldLevel = this.state.items.currentLevels[itemName]
       let newIncrement = this.state.boxIncrement,
@@ -34,7 +39,6 @@ class App extends Component {
       if ( Number.isInteger(value) ) {
         newIncrement += value
       } else {
-        newBoxPunchValue += parseInt(value)
       }
       let itemChange = {}
       itemChange[itemName] = oldLevel + 1
@@ -52,7 +56,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
         <Box click={this.incrementCount.bind(this)}/>
         <Wallet value={this.state.wallet}/>
         <Store wallet={this.state.wallet}
