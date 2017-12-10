@@ -11,7 +11,7 @@ class App extends Component {
       wallet: 0,
       boxPunchValue: 1,
       boxIncrement: 0,
-      items: boxData
+      data: boxData
     };
   }
 
@@ -26,25 +26,25 @@ class App extends Component {
   }
 
   makeVisible(itemName) {
-    let newItems = Object.assign(this.state.items)
+    let newItems = Object.assign(this.state.data)
     newItems.items[itemName].visible = true
     this.setState({items: newItems})
   }
 
   buyItem(itemName) {
-      const oldLevel = this.state.items.currentLevels[itemName]
+      const itemObject = this.state.data.items[itemName]
+      const oldLevel = itemObject.level
       let newIncrement = this.state.boxIncrement,
         newBoxPunchValue = this.state.boxPunchValue,
-        value = this.state.items.values[itemName][oldLevel];
+        value = itemObject.values[oldLevel];
       if ( Number.isInteger(value) ) {
         newIncrement += value
       } else {
+        newBoxPunchValue += parseInt(value)
       }
-      let itemChange = {}
-      itemChange[itemName] = oldLevel + 1
-      let newLevels = Object.assign(this.state.items.currentLevels, itemChange)
-      let newItems = Object.assign(this.state.items, newLevels)
-      let newWallet = this.state.wallet - this.state.items.prices[itemName][oldLevel]
+      let newItems = Object.assign(this.state.data.items)
+      newItems[itemName].level = oldLevel + 1
+      let newWallet = this.state.wallet - itemObject.prices[oldLevel]
       this.setState({
         boxIncrement: newIncrement,
         boxPunchValue: newBoxPunchValue,
@@ -59,7 +59,7 @@ class App extends Component {
         <Box click={this.incrementCount.bind(this)}/>
         <Wallet value={this.state.wallet}/>
         <Store wallet={this.state.wallet}
-          items={this.state.items}
+          items={this.state.data}
           buyItem={this.buyItem.bind(this)}
           />
       </div>
