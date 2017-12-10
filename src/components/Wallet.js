@@ -4,7 +4,7 @@ class Wallet extends Component {
 
   displayWallet() {
     if (this.props.value > 0) {
-      return this.props.value
+      return Math.trunc(this.props.value)
     }
   }
 

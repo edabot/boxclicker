@@ -21,8 +21,10 @@ class App extends Component {
 
   componentDidMount() {
     setInterval(() => {
-      this.setState({wallet: this.state.wallet + this.state.boxIncrement})
-    }, 1000);
+      if (this.state.boxIncrement > 0) {
+        this.setState({wallet: (this.state.wallet + this.state.boxIncrement / 10).toFixed(1)/1})
+      }
+    }, 100);
   }
 
   makeVisible(itemName) {
