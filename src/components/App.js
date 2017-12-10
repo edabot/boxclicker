@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Box from './Box';
 import Store from './Store';
 import Wallet from './Wallet';
-import boxData from './boxData.js';
+import boxData from '../boxData.js';
 
 class App extends Component {
   constructor(props) {
