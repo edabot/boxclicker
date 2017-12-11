@@ -16,7 +16,7 @@ class Box extends Component {
     super(props)
 
     this.state = {
-      yay: [{value: 3, time: 2}]
+      yay: [{value: 3, time: 2, key: 'fred'}]
     }
   }
 
@@ -35,8 +35,9 @@ class Box extends Component {
   }
 
   onClick() {
-    this.props.click()
-    this.setState({yay: this.state.yay.concat([{value: 3, time: 2, key: Date.now()}])})
+    this.props.onClick()
+    let timeNow = Date.now()
+    this.setState({yay: this.state.yay.concat([{value: this.props.clickValue, time: 2, key: timeNow}])})
   }
 
   render() {

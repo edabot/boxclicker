@@ -82,7 +82,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Box click={this.incrementCount.bind(this)}/>
+        <Box
+          onClick={this.incrementCount.bind(this)}
+          clickValue={this.state.boxPunchValue}
+        />
         <Wallet
           value={this.props.box}
           increment = {(this.state.boxIncrement / 10).toFixed(1)/1}
