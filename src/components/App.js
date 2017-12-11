@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as boxActions from '../actions/box-actions';
+import * as itemActions from '../actions/item-actions';
+
 import Box from './Box';
 import Store from './Store';
 import Wallet from './Wallet';
@@ -19,16 +21,19 @@ class App extends Component {
   }
 
   incrementCount() {
-    this.props.actions.clickBox();
+    this.props.actions.clickBox(this.state.boxPunchValue)
     this.setState({wallet: this.state.wallet + this.state.boxPunchValue})
   }
 
   componentDidMount() {
     setInterval(() => {
       if (this.state.boxIncrement > 0) {
-        this.setState({wallet: (this.state.wallet + this.state.boxIncrement / 10).toFixed(1)/1})
+        this.setState({wallet: this.state.wallet + this.state.boxIncrement})
       }
-    }, 100);
+    }, 1000);
+    setInterval(() => {
+      this.props.actions.updateBox(this.state.wallet)
+    }, 1000);
   }
 
   makeVisible(itemName) {
@@ -50,6 +55,7 @@ class App extends Component {
       }
       let newItems = Object.assign(this.state.data.items)
       newItems[itemName].level = oldLevel + 1
+      this.props.actions.buyItem(itemName, oldLevel + 1, itemObject.prices[oldLevel])
       let newWallet = this.state.wallet - itemObject.prices[oldLevel]
       this.setState({
         boxIncrement: newIncrement,
@@ -63,7 +69,10 @@ class App extends Component {
     return (
       <div className="App">
         <Box click={this.incrementCount.bind(this)}/>
-        <Wallet value={this.state.wallet}/>
+        <Wallet
+          value={this.props.box}
+          increment = {(this.state.boxIncrement / 10).toFixed(1)/1}
+        />
         <Store wallet={this.state.wallet}
           items={this.state.data}
           buyItem={this.buyItem.bind(this)}
@@ -81,7 +90,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(boxActions, dispatch)
+    actions: bindActionCreators(Object.assign(boxActions, itemActions), dispatch)
   }
 }
 

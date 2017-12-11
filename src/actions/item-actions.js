@@ -6,3 +6,12 @@ export const addItem = (item) => {
     item
   }
 }
+
+export const buyItem = (itemName, level, cost) => {
+  return {
+    type: types.BUY_ITEM,
+    itemName,
+    level,
+    cost
+  }
+}
