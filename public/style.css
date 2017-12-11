@@ -26,11 +26,24 @@
   to {
     transform: rotate(360deg); } }
 
-.next-item {
-  color: lightgray; }
-
-.available {
-  cursor: pointer; }
+.store-item {
+  position: relative; }
+  .store-item .next-item {
+    color: lightgray; }
+  .store-item .available {
+    cursor: pointer; }
+  .store-item .item-description {
+    position: absolute;
+    transform: translateX(-50%) translateY(-60px);
+    border-radius: 10px;
+    left: 50%;
+    opacity: 0;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    transition: all .3s; }
+  .store-item:hover .item-description {
+    opacity: .8; }
 
 .cube-viewer {
   perspective: 1500px;

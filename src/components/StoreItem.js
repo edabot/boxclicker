@@ -18,14 +18,20 @@ class StoreItem extends Component {
       let priceText = `${this.props.itemName} - $${price}`
       if (cash >= price) {
         return (
+          <div>
           <div className="u-pointer" onClick={this.buyItem.bind(this)}>
             {priceText}
+          </div>
+          <div className="item-description">perp</div>
           </div>
         )
       } else {
         return (
+          <div>
           <div className="next-item">
           {priceText}
+          </div>
+          <div className="item-description">perp</div>
           </div>
         )
       }
