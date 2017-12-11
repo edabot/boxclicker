@@ -50,16 +50,10 @@ class App extends Component {
 
   checkIfAvailable() {
     let firstItem = this.state.firstPrices[0]
-    if (this.props.box >= firstItem.price * .8) {
+    if (firstItem && this.props.box >= firstItem.price * .6) {
       this.props.actions.showItem(firstItem.name)
       this.setState({firstPrices: this.state.firstPrices.slice(1)})
     }
-  }
-
-  makeVisible(itemName) {
-    let newItems = Object.assign(this.state.data)
-    newItems.items[itemName].visible = true
-    this.setState({items: newItems})
   }
 
   buyItem(itemName) {

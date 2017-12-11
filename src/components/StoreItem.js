@@ -9,23 +9,26 @@ class StoreItem extends Component {
 
   displayItem() {
 
-    let price = this.props.prices[this.props.level],
-      cash = this.props.cash
-    let priceText = `${this.props.itemName} - $${price}`
-    if (cash >= price) {
-      return (
-        <div className="u-pointer" onClick={this.buyItem.bind(this)}>
-          {priceText}
-        </div>
-      )
-    }
+    let itemLevel = this.props.itemLevels[this.props.itemName]
 
-    if ( this.props.itemLevels[this.props.itemName] ) {
-      return (
-        <div className="next-item">
+    if ( itemLevel ) {
+      if ( itemLevel === "available") { itemLevel = 0 }
+      let price = this.props.prices[itemLevel],
+        cash = this.props.cash
+      let priceText = `${this.props.itemName} - $${price}`
+      if (cash >= price) {
+        return (
+          <div className="u-pointer" onClick={this.buyItem.bind(this)}>
+            {priceText}
+          </div>
+        )
+      } else {
+        return (
+          <div className="next-item">
           {priceText}
-        </div>
-      )
+          </div>
+        )
+      }
     }
   }
 
