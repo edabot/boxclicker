@@ -15,3 +15,10 @@ export const buyItem = (itemName, level, cost) => {
     cost
   }
 }
+
+export const showItem = (itemName) => {
+  return {
+    type: types.SHOW_ITEM,
+    itemName
+  }
+}

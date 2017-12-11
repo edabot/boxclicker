@@ -1,3 +1,6 @@
+.u-pointer {
+  cursor: pointer; }
+
 .App {
   text-align: center; }
 
@@ -26,77 +29,64 @@
 .next-item {
   color: lightgray; }
 
+.available {
+  cursor: pointer; }
+
 .cube-viewer {
   perspective: 1500px;
   perspective-origin: 0 100px;
   position: relative;
   width: 100%;
-  height: 250px;
   transition: transform .08s; }
-
-.cube-viewer:active {
-  transform: scale(1.03); }
-
-.cube-viewer .cube {
-  position: relative;
-  margin: 50px auto;
-  width: 200px;
-  transform-style: preserve-3d;
-  animation: spin 150s infinite linear; }
-
-.cube-viewer .cube:active div {
-  background: radial-gradient(rgba(173, 132, 213, 0.4) 70%, #000000); }
-
-.cube-viewer .cube div {
-  position: absolute;
-  width: 200px;
-  height: 200px; }
-
-.cube-viewer .cube .front {
-  transform: translateZ(100px);
-  background: rgba(173, 132, 213, 0.3); }
-
-.cube-viewer .cube:hover .front {
-  background: radial-gradient(rgba(173, 132, 213, 0.3) 60%, rgba(0, 0, 0, 0.3)); }
-
-.cube-viewer .cube .back {
-  transform: translateZ(-100px) rotateY(180deg);
-  background: rgba(255, 229, 207, 0.3); }
-
-.cube-viewer .cube:hover .back {
-  background: radial-gradient(rgba(255, 229, 207, 0.3) 60%, rgba(0, 0, 0, 0.3)); }
-
-.cube-viewer .cube .top {
-  transform: rotateX(-90deg) translateY(-100px);
-  transform-origin: top center;
-  background: rgba(250, 189, 172, 0.3); }
-
-.cube-viewer .cube:hover .top {
-  background: radial-gradient(rgba(250, 189, 172, 0.3) 60%, rgba(0, 0, 0, 0.3)); }
-
-.cube-viewer .cube .bottom {
-  transform: rotateX(90deg) translateY(100px);
-  transform-origin: bottom center;
-  background-color: rgba(158, 217, 185, 0.3); }
-
-.cube-viewer .cube:hover .bottom {
-  background: radial-gradient(rgba(158, 217, 185, 0.3) 60%, rgba(0, 0, 0, 0.3)); }
-
-.cube-viewer .cube .left {
-  transform: rotateY(270deg) translateX(-100px);
-  transform-origin: center left;
-  background-color: rgba(182, 183, 219, 0.3); }
-
-.cube-viewer .cube:hover .left {
-  background: radial-gradient(rgba(182, 183, 219, 0.3) 60%, rgba(0, 0, 0, 0.3)); }
-
-.cube-viewer .cube .right {
-  transform: rotateY(90deg) translateX(100px);
-  transform-origin: top right;
-  background: rgba(219, 218, 182, 0.3); }
-
-.cube-viewer .cube:hover .right {
-  background: radial-gradient(rgba(219, 218, 182, 0.3) 60%, rgba(0, 0, 0, 0.3)); }
+  .cube-viewer:active {
+    transform: scale(1.03); }
+  .cube-viewer .cube {
+    position: relative;
+    margin: 50px auto;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: spin 150s infinite linear; }
+    .cube-viewer .cube:active div {
+      background: radial-gradient(rgba(173, 132, 213, 0.4) 70%, black); }
+    .cube-viewer .cube div {
+      position: absolute;
+      width: 200px;
+      height: 200px; }
+    .cube-viewer .cube .front {
+      transform: translateZ(100px);
+      background: rgba(173, 132, 213, 0.3); }
+    .cube-viewer .cube:hover .front {
+      background: radial-gradient(rgba(173, 132, 213, 0.3) 60%, rgba(0, 0, 0, 0.3)); }
+    .cube-viewer .cube .back {
+      transform: translateZ(-100px) rotateY(180deg);
+      background: rgba(255, 229, 207, 0.3); }
+    .cube-viewer .cube:hover .back {
+      background: radial-gradient(rgba(255, 229, 207, 0.3) 60%, rgba(0, 0, 0, 0.3)); }
+    .cube-viewer .cube .top {
+      transform: rotateX(-90deg) translateY(-100px);
+      transform-origin: top center;
+      background: rgba(250, 189, 172, 0.3); }
+    .cube-viewer .cube:hover .top {
+      background: radial-gradient(rgba(250, 189, 172, 0.3) 60%, rgba(0, 0, 0, 0.3)); }
+    .cube-viewer .cube .bottom {
+      transform: rotateX(90deg) translateY(100px);
+      transform-origin: bottom center;
+      background-color: rgba(158, 217, 185, 0.3); }
+    .cube-viewer .cube:hover .bottom {
+      background: radial-gradient(rgba(158, 217, 185, 0.3) 60%, rgba(0, 0, 0, 0.3)); }
+    .cube-viewer .cube .left {
+      transform: rotateY(270deg) translateX(-100px);
+      transform-origin: center left;
+      background-color: rgba(182, 183, 219, 0.3); }
+    .cube-viewer .cube:hover .left {
+      background: radial-gradient(rgba(182, 183, 219, 0.3) 60%, rgba(0, 0, 0, 0.3)); }
+    .cube-viewer .cube .right {
+      transform: rotateY(90deg) translateX(100px);
+      transform-origin: top right;
+      background: rgba(219, 218, 182, 0.3); }
+    .cube-viewer .cube:hover .right {
+      background: radial-gradient(rgba(219, 218, 182, 0.3) 60%, rgba(0, 0, 0, 0.3)); }
 
 @keyframes spin {
   0% {

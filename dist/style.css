@@ -1,3 +1,6 @@
+.u-pointer {
+  cursor: pointer; }
+
 .App {
   text-align: center; }
 
@@ -25,6 +28,9 @@
 
 .next-item {
   color: lightgray; }
+
+.available {
+  cursor: pointer; }
 
 .cube-viewer {
   perspective: 1500px;

@@ -32,7 +32,7 @@ class App extends Component {
       }
     }, 1000);
     setInterval(() => {
-      this.props.actions.updateBox(this.state.wallet)
+      this.props.actions.updateBox(this.props.box + this.state.boxIncrement)
     }, 1000);
   }
 
@@ -73,7 +73,7 @@ class App extends Component {
           value={this.props.box}
           increment = {(this.state.boxIncrement / 10).toFixed(1)/1}
         />
-        <Store wallet={this.state.wallet}
+        <Store wallet={this.props.box}
           items={this.state.data}
           buyItem={this.buyItem.bind(this)}
           />
