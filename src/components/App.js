@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as boxActions from '../actions/box-actions';
 import Box from './Box';
 import Store from './Store';
 import Wallet from './Wallet';
@@ -16,6 +19,7 @@ class App extends Component {
   }
 
   incrementCount() {
+    this.props.actions.clickBox();
     this.setState({wallet: this.state.wallet + this.state.boxPunchValue})
   }
 
@@ -42,7 +46,7 @@ class App extends Component {
       if ( Number.isInteger(value) ) {
         newIncrement += value
       } else {
-        newBoxPunchValue += parseInt(value)
+        newBoxPunchValue += parseInt(value, 10)
       }
       let newItems = Object.assign(this.state.data.items)
       newItems[itemName].level = oldLevel + 1
@@ -69,4 +73,16 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state, props) {
+  return {
+    box: state.box
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(boxActions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
