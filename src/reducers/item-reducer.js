@@ -7,7 +7,7 @@ export default (state={}, action) => {
       newItem[action.itemName] = action.level
       return {...state, ...newItem}
     case types.SHOW_ITEM:
-      newItem[action.itemName] = -1
+      newItem[action.itemName] = 'available'
       return {...state, ...newItem}
     default:
       return state;

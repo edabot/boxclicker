@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 class Store extends Component {
 
@@ -19,7 +20,7 @@ class Store extends Component {
       )
     }
 
-    if ( this.props.level > 0 || cash > (.8 * price - 2) ) {
+    if ( this.props.itemLevels[this.props.itemName] ) {
       return (
         <div className="next-item">
           {priceText}
@@ -37,4 +38,10 @@ class Store extends Component {
   }
 }
 
-export default Store;
+function mapStateToProps(state, props) {
+  return {
+    itemLevels: state.itemLevels
+  }
+}
+
+export default connect(mapStateToProps)(Store);

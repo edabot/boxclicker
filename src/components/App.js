@@ -9,6 +9,16 @@ import Store from './Store';
 import Wallet from './Wallet';
 import boxData from '../boxData.js';
 
+function dataToPrices(data) {
+  let keys = Object.keys(data),
+  result = []
+  keys.forEach(key => {
+    result.push({name: key, price: data[key].prices[0]})
+  })
+  result.sort((a,b) => a.price - b.price)
+  return result
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +26,8 @@ class App extends Component {
       wallet: 0,
       boxPunchValue: 1,
       boxIncrement: 0,
-      data: boxData
+      data: boxData,
+      firstPrices: dataToPrices(boxData.items)
     };
   }
 
@@ -33,7 +44,16 @@ class App extends Component {
     }, 1000);
     setInterval(() => {
       this.props.actions.updateBox(this.props.box + this.state.boxIncrement)
+      this.checkIfAvailable()
     }, 1000);
+  }
+
+  checkIfAvailable() {
+    let firstItem = this.state.firstPrices[0]
+    if (this.props.box >= firstItem.price * .8) {
+      this.props.actions.showItem(firstItem.name)
+      this.setState({firstPrices: this.state.firstPrices.slice(1)})
+    }
   }
 
   makeVisible(itemName) {
