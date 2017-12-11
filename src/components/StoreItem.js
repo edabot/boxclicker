@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-class Store extends Component {
+class StoreItem extends Component {
 
   buyItem() {
     this.props.buyItem(this.props.itemName)
@@ -10,7 +10,7 @@ class Store extends Component {
   displayItem() {
 
     let price = this.props.prices[this.props.level],
-      cash = this.props.wallet
+      cash = this.props.cash
     let priceText = `${this.props.itemName} - $${price}`
     if (cash >= price) {
       return (
@@ -40,8 +40,9 @@ class Store extends Component {
 
 function mapStateToProps(state, props) {
   return {
-    itemLevels: state.itemLevels
+    itemLevels: state.itemLevels,
+    cash: state.box
   }
 }
 
-export default connect(mapStateToProps)(Store);
+export default connect(mapStateToProps)(StoreItem);
