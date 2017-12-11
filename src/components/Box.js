@@ -16,20 +16,20 @@ class Box extends Component {
     super(props)
 
     this.state = {
-      yay: [{value: 3, time: 2, key: 'fred'}]
+      clickValues: []
     }
   }
 
   componentDidMount() {
     setInterval(() => {
-      if (this.state.yay.length > 0) {
-        let newYay = []
-        this.state.yay.forEach(item => {
+      if (this.state.clickValues.length > 0) {
+        let newClickValues = []
+        this.state.clickValues.forEach(item => {
           if (item.time > 0) {
-            newYay.push({value: item.value, time: item.time - 2, key: item.key})
+            newClickValues.push({value: item.value, time: item.time - 2, key: item.key})
           }
         })
-        this.setState({yay: newYay})
+        this.setState({clickValues: newClickValues})
       }
     }, 2000);
   }
@@ -37,7 +37,7 @@ class Box extends Component {
   onClick() {
     this.props.onClick()
     let timeNow = Date.now()
-    this.setState({yay: this.state.yay.concat([{value: this.props.clickValue, time: 2, key: timeNow}])})
+    this.setState({clickValues: this.state.clickValues.concat([{value: this.props.clickValue, time: 2, key: timeNow}])})
   }
 
   render() {
@@ -52,7 +52,7 @@ class Box extends Component {
             <div className="left"></div>
             <div className="right"></div>
           </div>
-          {this.state.yay.map(item => <Yay key={item.key} item={item}/> )}
+          {this.state.clickValues.map(item => <Yay key={item.key} item={item}/> )}
         </div>
       </div>
     );
