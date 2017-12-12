@@ -6,11 +6,16 @@
   transform: translateX(-50%);
   background-color: lightgray;
   width: 20rem;
+  padding: 1rem;
+
+  div:not(:last-child) {
+    margin-bottom: 1rem;
+  }
 
   .inventory-row {
-    padding: 5px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     background-color: #eee;
 
     .inventory-icon {

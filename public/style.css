@@ -245,11 +245,14 @@ body {
   right: 50%;
   transform: translateX(-50%);
   background-color: lightgray;
-  width: 20rem; }
+  width: 20rem;
+  padding: 1rem; }
+  .inventory div:not(:last-child) {
+    margin-bottom: 1rem; }
   .inventory .inventory-row {
-    padding: 5px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     background-color: #eee; }
     .inventory .inventory-row .inventory-icon svg {
       height: 3rem;

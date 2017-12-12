@@ -5,7 +5,7 @@ function processNamesAndNumbers(itemList, items) {
   let result = [],
     itemKeys = Object.keys(items);
   itemList.forEach( item => {
-    if ( itemKeys.includes(item) ) {
+    if ( itemKeys.includes(item) && items[item] !== "available") {
       result.push(item)
     }
   })

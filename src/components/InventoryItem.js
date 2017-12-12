@@ -18,6 +18,8 @@ class InventoryItem extends Component {
           {this.displayIcons()}
         </div>
       )
+    } else {
+      return<div></div>
     }
   }
 
