@@ -273,3 +273,7 @@ body {
     .inventory .inventory-row .inventory-icon .brutal-box {
       color: #eb6841;
       animation: 10s occasionalRotate infinite; }
+
+.speed {
+  margin-top: 1rem;
+  font-size: .7rem; }

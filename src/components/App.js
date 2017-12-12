@@ -8,6 +8,8 @@ import Box from './Box';
 import Store from './Store';
 import Wallet from './Wallet';
 import Inventory from './Inventory';
+import Speed from './Speed';
+
 import boxData from '../boxData.js';
 
 function dataToPrices(data) {
@@ -95,6 +97,7 @@ class App extends Component {
           items={this.state.data}
           buyItem={this.buyItem.bind(this)}
           />
+          <Speed speed={this.state.boxIncrement} />
           <Inventory itemList={this.state.data.names} items={this.props.itemLevels || {}}/>
       </div>
     );
