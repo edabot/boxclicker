@@ -15,14 +15,14 @@ class StoreItem extends Component {
       if ( itemLevel === "available") { itemLevel = 0 }
       let price = this.props.prices[itemLevel],
         cash = this.props.cash
-      let priceText = `${this.props.itemName} - $${price}`
+      let priceText = `${this.props.itemName} - ${price}`
       if (cash >= price) {
         return (
           <div>
           <div className="u-pointer" onClick={this.buyItem.bind(this)}>
             {priceText}
           </div>
-          <div className="item-description">perp</div>
+          <div className="item-description">{this.props.description}</div>
           </div>
         )
       } else {
@@ -31,7 +31,7 @@ class StoreItem extends Component {
           <div className="next-item">
           {priceText}
           </div>
-          <div className="item-description">perp</div>
+          <div className="item-description">{this.props.description}</div>
           </div>
         )
       }

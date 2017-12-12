@@ -9,8 +9,8 @@ class Store extends Component {
         {this.props.items.names.map( itemName => <StoreItem
           itemName={itemName}
           level={this.props.items.items[itemName].level}
+          description={this.props.items.items[itemName].description}
           prices={this.props.items.items[itemName].prices}
-          visible={this.props.items.items[itemName].visible}
           wallet={this.props.wallet}
           buyItem={this.props.buyItem}
           key={itemName}/>)}

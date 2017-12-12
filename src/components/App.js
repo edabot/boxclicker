@@ -7,6 +7,7 @@ import * as itemActions from '../actions/item-actions';
 import Box from './Box';
 import Store from './Store';
 import Wallet from './Wallet';
+import Inventory from './Inventory';
 import boxData from '../boxData.js';
 
 function dataToPrices(data) {
@@ -94,6 +95,7 @@ class App extends Component {
           items={this.state.data}
           buyItem={this.buyItem.bind(this)}
           />
+          <Inventory itemList={this.state.data.names} items={this.props.itemLevels || {}}/>
       </div>
     );
   }
@@ -101,7 +103,8 @@ class App extends Component {
 
 function mapStateToProps(state, props) {
   return {
-    box: state.box
+    box: state.box,
+    itemLevels: state.itemLevels
   }
 }
 

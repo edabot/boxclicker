@@ -34,6 +34,7 @@
     cursor: pointer; }
   .store-item .item-description {
     position: absolute;
+    visibility: hidden;
     transform: translateX(-50%) translateY(-60px);
     border-radius: 10px;
     left: 50%;
@@ -43,7 +44,18 @@
     color: white;
     transition: all .3s; }
   .store-item:hover .item-description {
+    visibility: visible;
+    opacity: .8;
+    animation: 4s 1 hide;
+    animation-delay: 2s; }
+
+@keyframes hide {
+  0% {
     opacity: .8; }
+  90% {
+    opacity: .8; }
+  100% {
+    opacity: 0; } }
 
 .cube-viewer {
   perspective: 1500px;
@@ -103,9 +115,47 @@
 
 .click-value {
   position: absolute;
-  left: 50%;
-  top: 50%;
   animation: rise 4s ease-out; }
+  .click-value-l-1 {
+    left: 42%; }
+  .click-value-l-2 {
+    left: 44%; }
+  .click-value-l-3 {
+    left: 46%; }
+  .click-value-l-4 {
+    left: 48%; }
+  .click-value-l-5 {
+    left: 50%; }
+  .click-value-l-6 {
+    left: 52%; }
+  .click-value-l-7 {
+    left: 54%; }
+  .click-value-l-8 {
+    left: 56%; }
+  .click-value-l-9 {
+    left: 58%; }
+  .click-value-l-10 {
+    left: 60%; }
+  .click-value-t-1 {
+    top: 30%; }
+  .click-value-t-2 {
+    top: 40%; }
+  .click-value-t-3 {
+    top: 50%; }
+  .click-value-t-4 {
+    top: 60%; }
+  .click-value-t-5 {
+    top: 65%; }
+  .click-value-t-6 {
+    top: 70%; }
+  .click-value-t-7 {
+    top: 75%; }
+  .click-value-t-8 {
+    top: 80%; }
+  .click-value-t-9 {
+    top: 85%; }
+  .click-value-t-10 {
+    top: 90%; }
 
 @keyframes spin {
   0% {

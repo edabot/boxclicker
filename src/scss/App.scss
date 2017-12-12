@@ -40,6 +40,7 @@
 
   .item-description {
     position: absolute;
+    visibility: hidden;
     transform: translateX(-50%) translateY(-60px);
     border-radius: 10px;
     left: 50%;
@@ -51,7 +52,16 @@
   }
 
   &:hover .item-description {
+    visibility: visible ;
     opacity: .8;
+    animation: 4s 1 hide;
+    animation-delay: 2s;
 
   }
+}
+
+@keyframes hide {
+  0% { opacity: .8 }
+  90% { opacity: .8 }
+  100% { opacity: 0;}
 }

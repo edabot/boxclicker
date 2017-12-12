@@ -77,9 +77,32 @@
 
 .click-value {
   position: absolute;
-  left: 50%;
-  top: 50%;
   animation: rise 4s ease-out;
+  &-l {
+    &-1 { left: 42%; }
+    &-2 { left: 44%; }
+    &-3 { left: 46%; }
+    &-4 { left: 48%; }
+    &-5 { left: 50%; }
+    &-6 { left: 52%; }
+    &-7 { left: 54%; }
+    &-8 { left: 56%; }
+    &-9 { left: 58%; }
+    &-10 { left: 60%; }
+  }
+  &-t {
+    &-1 { top: 30%; }
+    &-2 { top: 40%; }
+    &-3 { top: 50%; }
+    &-4 { top: 60%; }
+    &-5 { top: 65%; }
+    &-6 { top: 70%; }
+    &-7 { top: 75%; }
+    &-8 { top: 80%; }
+    &-9 { top: 85%; }
+    &-10 { top: 90%; }
+  }
+
 }
 
 @keyframes spin {
