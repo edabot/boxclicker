@@ -9,7 +9,6 @@ function processNamesAndNumbers(itemList, items) {
       result.push(item)
     }
   })
-
   return result
 }
 
@@ -27,10 +26,20 @@ class Inventory extends Component {
     this.setState({items: processNamesAndNumbers(this.props.itemList, nextProps.items)})
   }
 
+  displayInventory() {
+    if (this.state.items.length > 0) {
+      return (
+        <div className="inventory">
+          {this.state.items.map( name => <InventoryItem key={name} name={name} number={this.props.items[name]} />)}
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
-      <div className="inventory">
-        {this.state.items.map( name => <InventoryItem key={name} name={name} number={this.props.items[name]} />)}
+      <div>
+        {this.displayInventory()}
       </div>
     );
   }

@@ -244,16 +244,18 @@ body {
   left: 50%;
   right: 50%;
   transform: translateX(-50%);
-  background-color: lightgray;
   width: 20rem;
-  padding: 1rem; }
-  .inventory div:not(:last-child) {
+  padding: 1rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 3px;
+  border: 1px solid lightgray; }
+  .inventory .inventory-row-container:not(:last-child) {
     margin-bottom: 1rem; }
   .inventory .inventory-row {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    background-color: #eee; }
+    flex-wrap: wrap; }
     .inventory .inventory-row .inventory-icon svg {
       height: 3rem;
       width: 3rem; }

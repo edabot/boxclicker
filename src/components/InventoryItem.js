@@ -33,7 +33,7 @@ class InventoryItem extends Component {
 
   render() {
     return (
-      <div>
+      <div className="inventory-row-container">
         {this.displayInventoryItem()}
       </div>
     );
