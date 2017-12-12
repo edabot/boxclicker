@@ -1,8 +1,59 @@
 .u-pointer {
   cursor: pointer; }
 
+@keyframes occasionalShimmy {
+  0% {
+    transform: translateX(0); }
+  90% {
+    transform: translateX(0); }
+  93% {
+    transform: translateX(-5px); }
+  97% {
+    transform: translateX(3px); }
+  99% {
+    transform: translateX(-1px); }
+  100% {
+    transform: translateX(0); } }
+
+@keyframes occasionalBounce {
+  0% {
+    transform: translateY(0); }
+  90% {
+    transform: translateY(0); }
+  93% {
+    transform: translateY(-5px); }
+  95% {
+    transform: translateY(1px); }
+  100% {
+    transform: translateY(0); } }
+
+@keyframes occasionalGrow {
+  0% {
+    transform: scale(1); }
+  90% {
+    transform: scale(1); }
+  93% {
+    transform: scale(1.05); }
+  95% {
+    transform: scale(0.99); }
+  100% {
+    transform: scale(1); } }
+
+@keyframes occasionalRotate {
+  0% {
+    transform: rotateZ(0); }
+  90% {
+    transform: rotateZ(0); }
+  93% {
+    transform: rotateZ(4deg); }
+  95% {
+    transform: rotateZ(-1deg); }
+  100% {
+    transform: rotateZ(0); } }
+
 .App {
-  text-align: center; }
+  text-align: center;
+  position: relative; }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -186,3 +237,34 @@ body {
   background-clip: text;
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8));
   color: transparent; }
+
+.inventory {
+  margin-top: 30px;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+  background-color: lightgray;
+  width: 20rem; }
+  .inventory .inventory-row {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    background-color: #eee; }
+    .inventory .inventory-row .inventory-icon svg {
+      height: 3rem;
+      width: 3rem; }
+    .inventory .inventory-row .inventory-icon:not(:last-child) {
+      margin-right: .5rem; }
+    .inventory .inventory-row .inventory-icon .box-multiplier {
+      color: #00a0b0;
+      animation: 10s occasionalShimmy infinite; }
+    .inventory .inventory-row .inventory-icon .auto-box {
+      color: #6a4a3c;
+      animation: 10s occasionalBounce infinite; }
+    .inventory .inventory-row .inventory-icon .speed-box {
+      color: #cc333f;
+      animation: 10s occasionalGrow infinite; }
+    .inventory .inventory-row .inventory-icon .brutal-box {
+      color: #eb6841;
+      animation: 10s occasionalRotate infinite; }

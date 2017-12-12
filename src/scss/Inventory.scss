@@ -1,0 +1,47 @@
+.inventory {
+  margin-top: 30px;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+  background-color: lightgray;
+  width: 20rem;
+
+  .inventory-row {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    background-color: #eee;
+
+    .inventory-icon {
+      svg {
+        height: 3rem;
+        width: 3rem;
+      }
+
+      &:not(:last-child) {
+        margin-right: .5rem;
+      }
+
+      .box-multiplier {
+        color: $icon-1;
+        animation: 10s occasionalShimmy infinite;
+      }
+
+      .auto-box {
+        color: $icon-2;
+        animation: 10s occasionalBounce infinite;
+      }
+
+      .speed-box {
+        color: $icon-3;
+        animation: 10s occasionalGrow infinite;
+      }
+
+      .brutal-box {
+        color: $icon-4;
+        animation: 10s occasionalRotate infinite;
+      }
+    }
+  }
+}

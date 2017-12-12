@@ -24,14 +24,14 @@ class InventoryItem extends Component {
   displayIcons() {
     let result = []
     for (let i = 0; i < this.props.number; i++) {
-      result.push(<FontAwesomeIcon icon={nameToIcon[this.props.name]} key={i}/>)
+      result.push(<div className="inventory-icon" key={i}><FontAwesomeIcon className={this.props.name} icon={nameToIcon[this.props.name]}/></div>)
     }
     return result
   }
 
   render() {
     return (
-      <div className="inventory">
+      <div>
         {this.displayInventoryItem()}
       </div>
     );
