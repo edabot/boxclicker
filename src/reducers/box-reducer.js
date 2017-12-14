@@ -6,6 +6,8 @@ export default (state = {count: 0, clickValue: 1, increment: 0}, action) => {
       return {...state, ...{count: state.count + state.clickValue}}
     case types.UPDATE_BOX:
       return {...state, ...{count: action.total}}
+    case types.INCREMENT_BOX:
+      return {...state, ...{count: state.count + state.increment}}
     case types.RESET_BOX:
       return {...action.box}
     case types.BUY_ITEM:

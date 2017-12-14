@@ -6,6 +6,12 @@ export const clickBox = () => {
   }
 }
 
+export const incrementBox = () => {
+  return {
+    type: types.INCREMENT_BOX,
+  }
+}
+
 export const updateBox = (total) => {
   return {
     type: types.UPDATE_BOX,

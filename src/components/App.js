@@ -12,6 +12,8 @@ import Speed from './Speed';
 
 import boxData from '../boxData.js';
 
+const storage = window.localStorage
+
 function dataToPrices(data) {
   let keys = Object.keys(data),
   result = []
@@ -21,8 +23,6 @@ function dataToPrices(data) {
   result.sort((a,b) => a.price - b.price)
   return result
 }
-
-const storage = window.localStorage
 
 class App extends Component {
   constructor(props) {
@@ -54,9 +54,7 @@ class App extends Component {
 
   componentDidMount() {
     setInterval(() => {
-      if (this.state.boxIncrement) {
-        this.props.actions.updateBox(this.props.box.count + this.state.boxIncrement)
-      }
+      this.props.actions.incrementBox()
       this.checkIfAvailable()
       storage['state'] = JSON.stringify(this.state)
       storage['box'] = JSON.stringify(this.props.box) || {}
@@ -85,12 +83,7 @@ class App extends Component {
       } else {
         this.props.actions.increaseClick(parseInt(value, 10))
       }
-      let newItems = Object.assign(this.state.data.items)
-      newItems[itemName].level = oldLevel + 1
       this.props.actions.buyItem(itemName, oldLevel + 1, itemObject.prices[oldLevel])
-      this.setState({
-        items: newItems,
-      })
   }
 
   render() {
