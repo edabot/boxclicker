@@ -9,6 +9,8 @@ export default (state={}, action) => {
     case types.SHOW_ITEM:
       newItem[action.itemName] = 'available'
       return {...state, ...newItem}
+    case types.RESET_ITEMS:
+      return {...action.items}
     default:
       return state;
   }

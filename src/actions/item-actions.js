@@ -22,3 +22,10 @@ export const showItem = (itemName) => {
     itemName
   }
 }
+
+export const resetItems = (items) => {
+  return {
+    type: types.RESET_ITEMS,
+    items
+  }
+}

@@ -28,41 +28,52 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      boxPunchValue: 1,
-      boxIncrement: 0,
       data: boxData,
       firstPrices: dataToPrices(boxData.items)
     };
   }
 
   incrementCount() {
-    this.props.actions.clickBox(this.state.boxPunchValue)
+    this.props.actions.clickBox()
   }
 
   componentWillMount() {
     if ( storage.state ) {
       let oldState = JSON.parse(storage.state)
-      console.log(oldState)
       this.setState({boxPunchValue: oldState.boxPunchValue})
     }
-    if (storage.boxCount) {
-      this.props.actions.updateBox(parseInt(storage.boxCount))
+    if (storage.box) {
+      let oldBox = JSON.parse(storage.box)
+      this.props.actions.updateBox(parseInt(oldBox.count, 10))
+      this.props.actions.resetClick(parseInt(oldBox.clickValue, 10))
+      this.props.actions.resetIncrement(parseInt(oldBox.increment, 10))
+    }
+    if (storage.itemLevels) {
+      let oldLevels = JSON.parse(storage.itemLevels)
+      this.props.actions.resetItems(oldLevels)
+      debugger
     }
   }
 
   componentDidMount() {
     setInterval(() => {
-      this.props.actions.updateBox(this.props.box + this.state.boxIncrement)
+      if (this.state.boxIncrement) {
+        this.props.actions.updateBox(this.props.box.count + this.state.boxIncrement)
+      }
       this.checkIfAvailable()
       storage['state'] = JSON.stringify(this.state)
-      storage['boxCount'] = this.props.box
+      storage['box'] = JSON.stringify(this.props.box) || {}
+      storage['itemLevels'] = JSON.stringify(this.props.itemLevels) || {}
       console.log('saved')
     }, 1000)
   }
 
   checkIfAvailable() {
+    if (this.state.firstPrices.length === 0) {return}
     let firstItem = this.state.firstPrices[0]
-    if (firstItem && this.props.box >= firstItem.price * .6) {
+    if ( this.props.itemLevels[firstItem.name] ) {
+      this.setState({firstPrices: this.state.firstPrices.slice(1)})
+    } else if (this.props.box.count >= firstItem.price * .6) {
       this.props.actions.showItem(firstItem.name)
       this.setState({firstPrices: this.state.firstPrices.slice(1)})
     }
@@ -71,20 +82,16 @@ class App extends Component {
   buyItem(itemName) {
       const itemObject = this.state.data.items[itemName]
       const oldLevel = itemObject.level
-      let newIncrement = this.state.boxIncrement,
-        newBoxPunchValue = this.state.boxPunchValue,
-        value = itemObject.values[oldLevel];
+      let value = itemObject.values[oldLevel];
       if ( Number.isInteger(value) ) {
-        newIncrement += value
+        this.props.actions.increaseIncrement(value)
       } else {
-        newBoxPunchValue += parseInt(value, 10)
+        this.props.actions.increaseClick(parseInt(value, 10))
       }
       let newItems = Object.assign(this.state.data.items)
       newItems[itemName].level = oldLevel + 1
       this.props.actions.buyItem(itemName, oldLevel + 1, itemObject.prices[oldLevel])
       this.setState({
-        boxIncrement: newIncrement,
-        boxPunchValue: newBoxPunchValue,
         items: newItems,
       })
   }
@@ -94,17 +101,17 @@ class App extends Component {
       <div className="App">
         <Box
           onClick={this.incrementCount.bind(this)}
-          clickValue={this.state.boxPunchValue}
+          clickValue={this.props.box.clickValue}
         />
         <Wallet
-          value={this.props.box}
-          increment = {(this.state.boxIncrement / 10).toFixed(1)/1}
+          value={this.props.box.count}
+          increment = {(this.props.box.increment / 10).toFixed(1)/1}
         />
-        <Store wallet={this.props.box}
+        <Store wallet={this.props.box.count}
           items={this.state.data}
           buyItem={this.buyItem.bind(this)}
           />
-          <Speed speed={this.state.boxIncrement} />
+          <Speed speed={this.props.box.increment} />
           <Inventory itemList={this.state.data.names} items={this.props.itemLevels || {}}/>
       </div>
     );
