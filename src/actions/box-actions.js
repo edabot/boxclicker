@@ -13,6 +13,13 @@ export const updateBox = (total) => {
   }
 }
 
+export const resetBox = (box) => {
+  return {
+    type: types.RESET_BOX,
+    box
+  }
+}
+
 export const increaseClick = (value) => {
   return {
     type: types.INCREASE_CLICK,

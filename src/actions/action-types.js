@@ -5,6 +5,7 @@ export const RESET_ITEMS = 'RESET_ITEMS';
 
 export const CLICK_BOX = 'CLICK_BOX';
 export const UPDATE_BOX = 'UPDATE_BOX';
+export const RESET_BOX = 'RESET_BOX';
 export const INCREASE_CLICK = 'INCREASE_CLICK';
 export const INCREASE_INCREMENT = 'INCREASE_INCREMENT';
 export const RESET_CLICK = 'RESET_CLICK';

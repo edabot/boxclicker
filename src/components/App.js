@@ -44,14 +44,11 @@ class App extends Component {
     }
     if (storage.box) {
       let oldBox = JSON.parse(storage.box)
-      this.props.actions.updateBox(parseInt(oldBox.count, 10))
-      this.props.actions.resetClick(parseInt(oldBox.clickValue, 10))
-      this.props.actions.resetIncrement(parseInt(oldBox.increment, 10))
+      this.props.actions.resetBox(oldBox)
     }
     if (storage.itemLevels) {
       let oldLevels = JSON.parse(storage.itemLevels)
       this.props.actions.resetItems(oldLevels)
-      debugger
     }
   }
 
