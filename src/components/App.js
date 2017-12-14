@@ -22,11 +22,12 @@ function dataToPrices(data) {
   return result
 }
 
+const storage = window.localStorage
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      wallet: 0,
       boxPunchValue: 1,
       boxIncrement: 0,
       data: boxData,
@@ -36,19 +37,27 @@ class App extends Component {
 
   incrementCount() {
     this.props.actions.clickBox(this.state.boxPunchValue)
-    this.setState({wallet: this.state.wallet + this.state.boxPunchValue})
+  }
+
+  componentWillMount() {
+    if ( storage.state ) {
+      let oldState = JSON.parse(storage.state)
+      console.log(oldState)
+      this.setState({boxPunchValue: oldState.boxPunchValue})
+    }
+    if (storage.boxCount) {
+      this.props.actions.updateBox(parseInt(storage.boxCount))
+    }
   }
 
   componentDidMount() {
     setInterval(() => {
-      if (this.state.boxIncrement > 0) {
-        this.setState({wallet: this.state.wallet + this.state.boxIncrement})
-      }
-    }, 1000);
-    setInterval(() => {
       this.props.actions.updateBox(this.props.box + this.state.boxIncrement)
       this.checkIfAvailable()
-    }, 1000);
+      storage['state'] = JSON.stringify(this.state)
+      storage['boxCount'] = this.props.box
+      console.log('saved')
+    }, 1000)
   }
 
   checkIfAvailable() {
@@ -73,12 +82,10 @@ class App extends Component {
       let newItems = Object.assign(this.state.data.items)
       newItems[itemName].level = oldLevel + 1
       this.props.actions.buyItem(itemName, oldLevel + 1, itemObject.prices[oldLevel])
-      let newWallet = this.state.wallet - itemObject.prices[oldLevel]
       this.setState({
         boxIncrement: newIncrement,
         boxPunchValue: newBoxPunchValue,
         items: newItems,
-        wallet: newWallet
       })
   }
 
